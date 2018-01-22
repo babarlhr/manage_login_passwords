@@ -23,13 +23,14 @@ class LoginPasswordCredentials(models.Model):
     department_id = fields.Many2one('hr.department',string='Site For')
     website_line_ids = fields.One2many('login.password.website', 'line_id', 'Password Line')
     server_line_ids = fields.One2many('login.password.server', 'line_id', 'Server Line')
-    department_ids = fields.Many2many('hr.department', 'department_type_rel', 'department_id', 'type_id', string='Visibile For')
+    department_ids = fields.Many2many('hr.department', 'department_type_rel', 'department_id', 'type_id', string='Visibile For deparments')
     database_line_ids = fields.One2many('login.password.database', 'line_id', 'Database Line')
     socialmedia_line_ids = fields.One2many('login.password.socialmedia', 'line_id', 'Social Media Line')
     extrainfo_line_ids = fields.One2many('login.password.extrainfo', 'line_id', 'Extra Info Line')
     attachment_line_ids = fields.One2many('login.password.attachment', 'line_id', 'Attachment Line')
     color = fields.Integer(string='Color Index')
     new_attachment = fields.Many2many('ir.attachment', string="Attachment")
+    user_ids = fields.Many2many('res.users', string="Visible for users")
 
     @api.multi
     def update(self):
